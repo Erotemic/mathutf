@@ -25,6 +25,8 @@ if exists('CMakeLists.txt'):
             from skbuild import setup
     except ImportError:
         setup = None
+else:
+    from setuptools import setup
 
 
 def parse_version(fpath):
