@@ -15,6 +15,38 @@ References:
 
     https://unicode-table.com/en/sets/superscript-and-subscript-letters/
 
+
+Notes:
+    From /r/mathmemes
+
+    Basic Math Symbols
+
+    ≠ ± ∓ ÷ × ∙ – √ ‰ ⊗ ⊕ ⊖ ⊘ ⊙ ≤ ≥ ≦ ≧ ≨ ≩ ≺ ≻ ≼ ≽ ⊏ ⊐ ⊑ ⊒ ² ³ °
+
+    Geometry Symbols
+
+    ∠ ∟ ° ≅ ~ ‖ ⟂ ⫛
+
+    Algebra Symbols
+
+    ≡ ≜ ≈ ∝ ∞ ≪ ≫ ⌊⌋ ⌈⌉ ∘∏ ∐ ∑ ⋀ ⋁ ⋂ ⋃ ⨀ ⨁ ⨂ 𝖕 𝖖 𝖗
+
+    Set Theory Symbols
+
+    ∅ ∖ ∁ ↦ ↣ ∩ ∪ ⊆ ⊂ ⊄ ⊊ ⊇ ⊃ ⊅ ⊋ ⊖ ∈ ∉ ∋ ∌ ℕ ℤ ℚ ℝ ℂ ℵ ℶ ℷ ℸ 𝓟
+
+    Logic Symbols
+
+    ¬ ∨ ∧ ⊕ → ← ⇒ ⇐ ↔ ⇔ ∀ ∃ ∄ ∴ ∵ ⊤ ⊥ ⊢ ⊨ ⫤ ⊣
+
+    Calculus and Analysis Symbols
+
+    ∫ ∬ ∭ ∮ ∯ ∰ ∇ ∆ δ ∂ ℱ ℒ ℓ
+
+    Greek Letters
+
+    𝛢𝛼 𝛣𝛽 𝛤𝛾 𝛥𝛿 𝛦𝜀𝜖 𝛧𝜁 𝛨𝜂 𝛩𝜃𝜗 𝛪𝜄 𝛫𝜅 𝛬𝜆 𝛭𝜇 𝛮𝜈 𝛯𝜉 𝛰𝜊 𝛱𝜋 𝛲𝜌 𝛴𝜎 𝛵𝜏 𝛶𝜐 𝛷𝜙𝜑 𝛸𝜒 𝛹𝜓 𝛺𝜔
+
 """
 import ubelt as ub
 
@@ -163,6 +195,7 @@ TABLES['numeric_sets'] = [
     {'chr': '𝕆', 'key': 'octernion', 'utf_name': 'MATHEMATICAL DOUBLE-STRUCK CAPITAL O'},
     {'chr': 'ℙ', 'key': 'irrational', 'utf_name': 'DOUBLE-STRUCK CAPITAL P'},
     {'chr': 'ℝ', 'key': 'real', 'utf_name': 'DOUBLE-STRUCK CAPITAL R'},
+    {'chr': '𝕋', 'key': 'trigintaduonion', 'utf_name': 'DOUBLE-STRUCK CAPITAL T'},
     {'chr': '𝟙', 'key': 'ones', 'utf_name': 'MATHEMATICAL DOUBLE-STRUCK DIGIT ONE'},
     {'chr': '∅', 'key': 'emptyset', 'utf_name': 'EMPTY SET'},
     # floating    = '𝕃'  # proposed
@@ -270,8 +303,21 @@ TABLES['misc'] = [
     {'chr': '…', 'key': 'ldots', 'utf_name': 'HORIZONTAL ELLIPSIS'},
     {'chr': '⋯', 'key': 'cdots', 'utf_name': 'MIDLINE HORIZONTAL ELLIPSIS'},
     {'chr': '⋈', 'key': 'join', 'utf_name': 'BOWTIE'},
-    {'chr': '∞', 'key': 'infinity', 'utf_name': 'INFINITY', 'alias': ['infty']},
 ]
+
+TABLES['transfinite'] = [
+    {'chr': '∞', 'key': 'infinity', 'utf_name': 'INFINITY', 'alias': ['infty']},
+    {'chr': 'ℵ', 'key': 'aleph'},
+    {'chr': 'ℶ', 'key': 'beth'},
+]
+
+
+def _compositions():
+    """
+    from mathutf.symbols import *  # NOQA
+    """
+    print(SYMBOLS['aleph'] + SYMBOLS['sub_1'])
+    print(SYMBOLS['beth'] + SYMBOLS['sub_1'])
 
 
 SYMBOLS = {}
@@ -291,6 +337,28 @@ def _populate_class():
 _populate_class()
 
 
+def _build_unicode_named_table():
+    """
+    https://stackoverflow.com/questions/10229156/how-many-characters-can-utf-8-encode
+    TODO: generate all unicode characters, for now this is enough.
+    """
+    import unicodedata
+    num_chars = 11141120
+    import pygtrie
+    trie = pygtrie.StringTrie(separator='_')
+    invalids = []
+    for index in range(1, num_chars):
+        try:
+            chr_ = chr(index)
+            utf_name = unicodedata.name(chr_)
+            key = utf_name.replace('-', '_').replace(' ', '_').lower()
+            trie[key] = chr_
+        except Exception:
+            invalids.append(index)
+    trie['greek_capital_letter_theta']
+    # kwarray.group_consecutive(invalids)
+
+
 def _query_unicode():
     import unicodedata
     all_items = []
@@ -305,7 +373,7 @@ def _query_unicode():
     import pandas as pd
     print(pd.DataFrame(all_items).to_string())
 
-    dups = ub.find_duplicates(all_items, key=lambda x: x['chr'])
+    # dups = ub.find_duplicates(all_items, key=lambda x: x['chr'])
 
     key_to_num = {}
     for chr_ in '0123456789':
