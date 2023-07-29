@@ -3,6 +3,8 @@
 References:
     https://en.wikipedia.org/wiki/Mathematical_operators_and_symbols_in_Unicode
 
+    https://en.wikipedia.org/wiki/Glossary_of_mathematical_symbols
+
     https://www.quora.com/What-do-mathbb-C-mathbb-F-mathbb-H-mathbb-N-mathbb-Q-mathbb-R-mathbb-S-and-mathbb-Z-mean
 
     https://mathworld.wolfram.com/Doublestruck.html
@@ -15,40 +17,54 @@ References:
 
     https://unicode-table.com/en/sets/superscript-and-subscript-letters/
 
-
-Notes:
-    From /r/mathmemes
-
-    Basic Math Symbols
-
-    ≠ ± ∓ ÷ × ∙ – √ ‰ ⊗ ⊕ ⊖ ⊘ ⊙ ≤ ≥ ≦ ≧ ≨ ≩ ≺ ≻ ≼ ≽ ⊏ ⊐ ⊑ ⊒ ² ³ °
-
-    Geometry Symbols
-
-    ∠ ∟ ° ≅ ~ ‖ ⟂ ⫛
-
-    Algebra Symbols
-
-    ≡ ≜ ≈ ∝ ∞ ≪ ≫ ⌊⌋ ⌈⌉ ∘∏ ∐ ∑ ⋀ ⋁ ⋂ ⋃ ⨀ ⨁ ⨂ 𝖕 𝖖 𝖗
-
-    Set Theory Symbols
-
-    ∅ ∖ ∁ ↦ ↣ ∩ ∪ ⊆ ⊂ ⊄ ⊊ ⊇ ⊃ ⊅ ⊋ ⊖ ∈ ∉ ∋ ∌ ℕ ℤ ℚ ℝ ℂ ℵ ℶ ℷ ℸ 𝓟
-
-    Logic Symbols
-
-    ¬ ∨ ∧ ⊕ → ← ⇒ ⇐ ↔ ⇔ ∀ ∃ ∄ ∴ ∵ ⊤ ⊥ ⊢ ⊨ ⫤ ⊣
-
-    Calculus and Analysis Symbols
-
-    ∫ ∬ ∭ ∮ ∯ ∰ ∇ ∆ δ ∂ ℱ ℒ ℓ
-
-    Greek Letters
-
-    𝛢𝛼 𝛣𝛽 𝛤𝛾 𝛥𝛿 𝛦𝜀𝜖 𝛧𝜁 𝛨𝜂 𝛩𝜃𝜗 𝛪𝜄 𝛫𝜅 𝛬𝜆 𝛭𝜇 𝛮𝜈 𝛯𝜉 𝛰𝜊 𝛱𝜋 𝛲𝜌 𝛴𝜎 𝛵𝜏 𝛶𝜐 𝛷𝜙𝜑 𝛸𝜒 𝛹𝜓 𝛺𝜔
-
+    https://github.com/fKunstner/latex-to-utf8/blob/master/map.js
 """
 import ubelt as ub
+
+
+# From /r/mathmemes Useful Symbol Sidebar
+USEFUL_SYMBOLS = """
+Basic Math Symbols
+------------------
+
+≠ ± ∓ ÷ × ∙ – √ ‰ ⊗ ⊕ ⊖ ⊘ ⊙ ≤ ≥ ≦ ≧ ≨ ≩ ≺ ≻ ≼ ≽ ⊏ ⊐ ⊑ ⊒ ² ³ °
+
+
+Geometry Symbols
+----------------
+
+∠ ∟ ° ≅ ~ ‖ ⟂ ⫛
+
+
+Algebra Symbols
+---------------
+
+≡ ≜ ≈ ∝ ∞ ≪ ≫ ⌊⌋ ⌈⌉ ∘∏ ∐ ∑ ⋀ ⋁ ⋂ ⋃ ⨀ ⨁ ⨂ 𝖕 𝖖 𝖗
+
+
+Set Theory Symbols
+------------------
+
+∅ ∖ ∁ ↦ ↣ ∩ ∪ ⊆ ⊂ ⊄ ⊊ ⊇ ⊃ ⊅ ⊋ ⊖ ∈ ∉ ∋ ∌ ℕ ℤ ℚ ℝ ℂ ℵ ℶ ℷ ℸ 𝓟
+
+
+Logic Symbols
+-------------
+
+¬ ∨ ∧ ⊕ → ← ⇒ ⇐ ↔ ⇔ ∀ ∃ ∄ ∴ ∵ ⊤ ⊥ ⊢ ⊨ ⫤ ⊣
+
+
+Calculus and Analysis Symbols
+-----------------------------
+
+∫ ∬ ∭ ∮ ∯ ∰ ∇ ∆ δ ∂ ℱ ℒ ℓ
+
+
+Greek Letters
+-------------
+
+𝛢𝛼 𝛣𝛽 𝛤𝛾 𝛥𝛿 𝛦𝜀𝜖 𝛧𝜁 𝛨𝜂 𝛩𝜃𝜗 𝛪𝜄 𝛫𝜅 𝛬𝜆 𝛭𝜇 𝛮𝜈 𝛯𝜉 𝛰𝜊 𝛱𝜋 𝛲𝜌 𝛴𝜎 𝛵𝜏 𝛶𝜐 𝛷𝜙𝜑 𝛸𝜒 𝛹𝜓 𝛺𝜔
+"""
 
 TABLES = {}
 
@@ -150,7 +166,6 @@ TABLES['subscripts'] = [
     {'chr': 'ᵩ', 'key': 'sub_phi', 'utf_name': 'GREEK SUBSCRIPT SMALL LETTER PHI'},
     {'chr': 'ᵪ', 'key': 'sub_chi', 'utf_name': 'GREEK SUBSCRIPT SMALL LETTER CHI'},
 
-    {'chr': 'ₔ', 'key': 'sub_schwa', 'utf_name': 'LATIN SUBSCRIPT SMALL LETTER SCHWA'},
     {'chr': '⨧', 'key': 'plus_with_sub_2', 'utf_name': 'PLUS SIGN WITH SUBSCRIPT TWO'},
 ]
 
@@ -195,7 +210,7 @@ TABLES['numeric_sets'] = [
     {'chr': '𝕆', 'key': 'octernion', 'utf_name': 'MATHEMATICAL DOUBLE-STRUCK CAPITAL O'},
     {'chr': 'ℙ', 'key': 'irrational', 'utf_name': 'DOUBLE-STRUCK CAPITAL P'},
     {'chr': 'ℝ', 'key': 'real', 'utf_name': 'DOUBLE-STRUCK CAPITAL R'},
-    {'chr': '𝕋', 'key': 'trigintaduonion', 'utf_name': 'DOUBLE-STRUCK CAPITAL T'},
+    {'chr': '𝕋', 'key': 'trigintaduonion', 'utf_name': 'MATHEMATICAL DOUBLE-STRUCK CAPITAL T'},
     {'chr': '𝟙', 'key': 'ones', 'utf_name': 'MATHEMATICAL DOUBLE-STRUCK DIGIT ONE'},
     {'chr': '∅', 'key': 'emptyset', 'utf_name': 'EMPTY SET'},
     # floating    = '𝕃'  # proposed
@@ -220,11 +235,11 @@ TABLES['set_operators'] = [
 ]
 
 TABLES['relational'] = [
-    {'chr': '≦', 'key': 'le', 'utf_name': 'LESS-THAN OVER EQUAL TO'},
+    {'chr': '≤', 'key': 'le', 'utf_name': 'LESS-THAN OVER EQUAL TO'},
     {'chr': '≥', 'key': 'ge', 'utf_name': 'GREATER-THAN OR EQUAL TO'},
 
-    {'chr': '<', 'key': 'lt', 'utf_name': 'LESS-THAN SIGN'},
-    {'chr': '>', 'key': 'gt', 'utf_name': 'GREATER-THAN SIGN'},
+    {'chr': '<', 'key': 'lt', 'utf_name': 'LESS-THAN SIGN', 'tex': '<'},
+    {'chr': '>', 'key': 'gt', 'utf_name': 'GREATER-THAN SIGN', 'tex': '>'},
 
     {'chr': '=', 'key': 'eq', 'utf_name': 'EQUALS SIGN'},
     {'chr': '≠', 'key': 'ne', 'utf_name': 'NOT EQUAL TO'},
@@ -267,7 +282,7 @@ TABLES['nary'] = [
 
 
 TABLES['arrows'] = [
-    {'chr': '→', 'key': 'right_arrow', 'utf_name': 'RIGHTWARDS ARROW'},
+    {'chr': '→', 'key': 'right_arrow', 'utf_name': 'RIGHTWARDS ARROW', 'alias': ['to']},
     {'chr': '←', 'key': 'left_arrow', 'utf_name': 'LEFTWARDS ARROW'},
     {'chr': '←', 'key': 'bidir_arrow', 'utf_name': 'LEFTWARDS ARROW'},
     {'chr': '⇒', 'key': 'right_darrow', 'utf_name': 'RIGHTWARDS DOUBLE ARROW'},
@@ -300,15 +315,22 @@ TABLES['nesting'] = [
 
 TABLES['misc'] = [
     {'chr': '⊥', 'key': 'perp', 'utf_name': 'UP TACK'},
+
+    {'chr': '⊢', 'key': 'yields', 'utf_name': 'RIGHT TACK', 'references': ['https://en.wikipedia.org/wiki/Turnstile_(symbol)']},
+    {'chr': '⊨', 'key': 'satisfies', 'utf_name': 'TRUE', 'references': ['https://en.wikipedia.org/wiki/Double_turnstile']},
+
     {'chr': '…', 'key': 'ldots', 'utf_name': 'HORIZONTAL ELLIPSIS'},
     {'chr': '⋯', 'key': 'cdots', 'utf_name': 'MIDLINE HORIZONTAL ELLIPSIS'},
     {'chr': '⋈', 'key': 'join', 'utf_name': 'BOWTIE'},
+
+    {'chr': '≦', 'key': 'leqq', 'utf_name': 'LESS-THAN OVER EQUAL TO'},
+    {'chr': '≧', 'key': 'geqq', 'utf_name': 'GREATER-THAN OVER EQUAL TO'},
 ]
 
 TABLES['transfinite'] = [
     {'chr': '∞', 'key': 'infinity', 'utf_name': 'INFINITY', 'alias': ['infty']},
-    {'chr': 'ℵ', 'key': 'aleph'},
-    {'chr': 'ℶ', 'key': 'beth'},
+    {'chr': 'ℵ', 'key': 'aleph', 'utf_name': 'ALEF SYMBOL'},
+    {'chr': 'ℶ', 'key': 'beth', 'utf_name': 'BET SYMBOL', 'alias': ['bet']},
 ]
 
 
@@ -359,7 +381,7 @@ def _build_unicode_named_table():
     # kwarray.group_consecutive(invalids)
 
 
-def _query_unicode():
+def _show_all():
     import unicodedata
     all_items = []
     for table_name, subtable in TABLES.items():
@@ -367,13 +389,97 @@ def _query_unicode():
             v = item['chr']
             all_items.append(item)
             utf_name = unicodedata.name(v)
-            assert item['utf_name'] == utf_name
-            print('{},'.format(ub.repr2(item, nl=0)))
+            item['group'] = table_name
+            if item.get('utf_name', None) != utf_name:
+                raise AssertionError(f'{item["utf_name"]} != {utf_name}')
+            # print('{},'.format(ub.repr2(item, nl=0)))
 
     import pandas as pd
-    print(pd.DataFrame(all_items).to_string())
+    import rich
+    import rich.markup
+    rich.print(rich.markup.escape(pd.DataFrame(all_items).to_string()))
 
     # dups = ub.find_duplicates(all_items, key=lambda x: x['chr'])
+
+
+def _dev_map_to_latex():
+    """
+    Used to map symbols to latex names
+    """
+    js_map = ub.grabdata('https://raw.githubusercontent.com/fKunstner/latex-to-utf8/master/map.js')
+    import ast
+    latex_to_utf = ast.literal_eval(ub.Path(js_map).read_text()[10:])
+    latex_to_utf = ub.udict(latex_to_utf)
+    utf_to_latex = latex_to_utf.invert(unique_vals=0)
+
+    def reorder_dict(d, head=[], tail=[]):
+        d = ub.udict(d)
+        head_parts = d & head
+        tail_parts = d & tail
+        rest_parts = d - (head_parts) - (tail_parts)
+        new = head_parts | rest_parts | tail_parts
+        return new
+
+    hard_coded = {
+        'Υ': {r'\Upsilon'},
+        'ᵦ': {r'_\beta'},
+        'ᵧ': {r'_\gamma'},
+        'ᵨ': {r'_\rho'},
+        'ᵩ': {r'_\phi'},
+        'ᵪ': {r'_\chi'},
+        '∂': {r'\partial'},
+        '→': {r'\rightarrow'},
+        '∘': {r'\\circ'},
+        '…': {r'\\ldots'},
+        '≠': {r'\\neq'},
+        '𝜏': {r'\\mittau'},
+    }
+    utf_to_latex.update(hard_coded)
+
+    failed = []
+    ambiguous = []
+    for table_name, subtable in TABLES.items():
+        for item in subtable:
+            try:
+                tex_items = list(utf_to_latex[item['chr']])
+                if len(tex_items) > 1:
+                    norms = list(ub.unique([t.replace('\\up', '\\') for t in tex_items]))
+                    if len(norms) == 1:
+                        tex_items = norms
+                    norms = list(ub.unique([t.replace('\\unicode', '\\') for t in tex_items]))
+                    if len(norms) == 1:
+                        tex_items = norms
+                    norms = list(ub.unique([t.lower() for t in tex_items]))
+                    if len(norms) == 1:
+                        tex_items = norms
+                    if any('mathbb' in t for t in tex_items):
+                        norms = [t for t in tex_items if t.startswith('\\mathbb{')]
+                        if len(norms) == 1:
+                            tex_items = norms
+                    if any('sqrt[' in t for t in tex_items):
+                        norms = [t for t in tex_items if t.startswith('\\sqrt[')]
+                        if len(norms) == 1:
+                            tex_items = norms
+                if len(tex_items) > 1:
+                    ambiguous.append([item, tex_items])
+                for tex in tex_items:
+                    item['tex'] = tex
+                reorder_dict(item, tail=['alias', 'references'])
+            except Exception:
+                failed.append(item)
+
+    print('TABLES = {}')
+    for table_name, subtable in TABLES.items():
+        print('')
+        print(f'TABLES["{table_name}"] = ' + ub.urepr(subtable))
+        ...
+
+
+def _dev_search_for_symbols():
+    """
+    Used to help build the initial list.
+    """
+    import unicodedata
 
     key_to_num = {}
     for chr_ in '0123456789':
@@ -443,3 +549,34 @@ def _query_unicode():
                 print('{},'.format(ub.repr2(item, nl=0)))
         except Exception:
             pass
+
+
+def search(query):
+    """
+    Example:
+        query = 'beta'
+    """
+    # Handle normalization of queries
+    if query == '*':
+        query = '.*'
+
+    import re
+    pat = re.compile(query, flags=re.IGNORECASE)
+
+    for table_name, subtable in TABLES.items():
+        for item in subtable:
+            item['group'] = table_name
+
+            flag = pat.search(item['key'])
+            if not flag:
+                flag = pat.search(item['utf_name'])
+            if not flag:
+                flag = pat.search(item['group'])
+            if not flag:
+                for alias in item.get('alias', []):
+                    flag = pat.search(alias)
+                    if flag:
+                        break
+
+            if flag:
+                yield item

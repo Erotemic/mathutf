@@ -226,13 +226,13 @@ if __name__ == '__main__':
         },
         license='Apache 2',
         packages=find_packages('.'),
-        # entry_points={
-        #     # the console_scripts entry point creates the package CLI
-        #     'console_scripts': [
-        #         # '{SCRIPT_NAME}={MODPATH}:{CALLNAME}',
-        #         'mathutf = mathutf.__main__:main'
-        #     ]
-        # },
+        entry_points={
+            # the console_scripts entry point creates the package CLI
+            'console_scripts': [
+                # '{SCRIPT_NAME}={MODPATH}:{CALLNAME}',
+                'mathutf = mathutf.__main__:main'
+            ]
+        },
         classifiers=[
             # List of classifiers available at:
             # https://pypi.python.org/pypi?%3Aaction=list_classifiers
