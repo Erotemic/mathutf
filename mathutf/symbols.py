@@ -228,6 +228,8 @@ TABLES['numeric_sets'] = [
     # floating    = '𝕃'  # proposed
 ]
 
+# 𝔸
+
 TABLES['set_operators'] = [
     {'chr': '∖', 'key': 'setdiff', 'utf_name': 'SET MINUS', 'tex': '\\smallsetminus'},
     {'chr': '⊂', 'key': 'subset', 'utf_name': 'SUBSET OF', 'tex': '\\subset'},

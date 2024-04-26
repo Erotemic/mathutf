@@ -5,8 +5,9 @@ from mathutf import symbols
 from mathutf.symbols import search
 
 
-def __getattr__(key):
-    return symbols.SYMBOLS[key]
+globals().update(symbols.SYMBOLS)
+# def __getattr__(key):
+#     return symbols.SYMBOLS[key]
 
 
 def __dir__():
