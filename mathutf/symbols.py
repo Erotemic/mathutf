@@ -188,6 +188,9 @@ TABLES['superscripts'] = [
     {'chr': '⁾', 'key': 'sup_rparen', 'utf_name': 'SUPERSCRIPT RIGHT PARENTHESIS', 'tex': '^)'},
     {'chr': 'ⁿ', 'key': 'sup_n', 'utf_name': 'SUPERSCRIPT LATIN SMALL LETTER N', 'tex': '^n'},
     {'chr': 'ⁱ', 'key': 'sup_i', 'utf_name': 'SUPERSCRIPT LATIN SMALL LETTER I', 'tex': '^i'},
+
+    # https://rupertshepherd.info/resource_pages/superscript-letters-in-unicode
+    {'chr': 'ᵗ', 'key': 'sup_t', 'utf_name': 'SUPERSCRIPT LATIN SMALL LETTER T', 'tex': '^t'},
 ]
 
 TABLES['quantifiers'] = [
