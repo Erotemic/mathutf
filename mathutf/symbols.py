@@ -173,7 +173,7 @@ TABLES['subscripts'] = [
 TABLES['superscripts'] = [
     {'chr': '⁰', 'key': 'sup_0', 'utf_name': 'SUPERSCRIPT ZERO', 'tex': '^0'},
     {'chr': '¹', 'key': 'sup_1', 'utf_name': 'SUPERSCRIPT ONE', 'tex': '^1'},
-    {'chr': '²', 'key': 'sup_2', 'utf_name': 'SUPERSCRIPT TWO', 'tex': '^2'},
+    {'chr': '²', 'key': 'sup_2', 'utf_name': 'SUPERSCRIPT TWO', 'tex': '^2', 'alias': ['squared']},
     {'chr': '³', 'key': 'sup_3', 'utf_name': 'SUPERSCRIPT THREE', 'tex': '^3'},
     {'chr': '⁴', 'key': 'sup_4', 'utf_name': 'SUPERSCRIPT FOUR', 'tex': '^4'},
     {'chr': '⁵', 'key': 'sup_5', 'utf_name': 'SUPERSCRIPT FIVE', 'tex': '^5'},
