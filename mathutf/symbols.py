@@ -196,7 +196,7 @@ TABLES['superscripts'] = [
 TABLES['quantifiers'] = [
     # {'chr': '∊', 'key': 'small_element_of', 'utf_name': 'SMALL ELEMENT OF'},
     # {'chr': 'ϵ', 'key': 'lunate_epsilon', 'utf_name': 'GREEK LUNATE EPSILON SYMBOL'},
-    {'chr': '∈', 'key': 'elementof', 'utf_name': 'ELEMENT OF', 'tex': '\\in'},
+    {'chr': '∈', 'key': 'elementof', 'utf_name': 'ELEMENT OF', 'tex': '\\in', 'alias': ['epsilon']},
     {'chr': '∉', 'key': 'not_elementof', 'utf_name': 'NOT AN ELEMENT OF', 'tex': '\\notin'},
     {'chr': '∀', 'key': 'forall', 'utf_name': 'FOR ALL', 'tex': '\\forall'},
     {'chr': '∃', 'key': 'exists', 'utf_name': 'THERE EXISTS', 'tex': '\\exists'},
