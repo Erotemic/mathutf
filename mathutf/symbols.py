@@ -124,6 +124,7 @@ TABLES['greek_letters'] = [
 ]
 
 TABLES['subscripts'] = [
+    # Digits
     {'chr': '₀', 'key': 'sub_0', 'utf_name': 'SUBSCRIPT ZERO', 'tex': '_0'},
     {'chr': '₁', 'key': 'sub_1', 'utf_name': 'SUBSCRIPT ONE', 'tex': '_1'},
     {'chr': '₂', 'key': 'sub_2', 'utf_name': 'SUBSCRIPT TWO', 'tex': '_2'},
@@ -135,6 +136,7 @@ TABLES['subscripts'] = [
     {'chr': '₈', 'key': 'sub_8', 'utf_name': 'SUBSCRIPT EIGHT', 'tex': '_8'},
     {'chr': '₉', 'key': 'sub_9', 'utf_name': 'SUBSCRIPT NINE', 'tex': '_9'},
 
+    # Signs
     {'chr': '₊', 'key': 'sub_plus', 'utf_name': 'SUBSCRIPT PLUS SIGN', 'tex': '_+'},
     {'chr': '₋', 'key': 'sub_minus', 'utf_name': 'SUBSCRIPT MINUS', 'tex': '_-'},
     {'chr': '₌', 'key': 'sub_eq', 'utf_name': 'SUBSCRIPT EQUALS SIGN', 'tex': '_='},
@@ -142,11 +144,15 @@ TABLES['subscripts'] = [
     {'chr': '₍', 'key': 'sub_lparen', 'utf_name': 'SUBSCRIPT LEFT PARENTHESIS', 'tex': '_('},
     {'chr': '₎', 'key': 'sub_rparen', 'utf_name': 'SUBSCRIPT RIGHT PARENTHESIS', 'tex': '_)'},
 
+    # IPA-derived subscripts (outside main subscript block)
+    # https://en.wikipedia.org/wiki/Unicode_subscripts_and_superscripts
     {'chr': 'ᵢ', 'key': 'sub_i', 'utf_name': 'LATIN SUBSCRIPT SMALL LETTER I', 'tex': '_i'},
     {'chr': 'ᵣ', 'key': 'sub_r', 'utf_name': 'LATIN SUBSCRIPT SMALL LETTER R', 'tex': '_r'},
     {'chr': 'ᵤ', 'key': 'sub_u', 'utf_name': 'LATIN SUBSCRIPT SMALL LETTER U', 'tex': '_u'},
     {'chr': 'ᵥ', 'key': 'sub_v', 'utf_name': 'LATIN SUBSCRIPT SMALL LETTER V', 'tex': '_v'},
+    {'chr': 'ⱼ', 'key': 'sub_j', 'utf_name': 'LATIN SUBSCRIPT SMALL LETTER J', 'tex': '_j'},
 
+    # Latin subscripts (U+2090–U+209F block)
     {'chr': 'ₐ', 'key': 'sub_a', 'utf_name': 'LATIN SUBSCRIPT SMALL LETTER A', 'tex': '_a'},
     {'chr': 'ₑ', 'key': 'sub_e', 'utf_name': 'LATIN SUBSCRIPT SMALL LETTER E', 'tex': '_e'},
     {'chr': 'ₒ', 'key': 'sub_o', 'utf_name': 'LATIN SUBSCRIPT SMALL LETTER O', 'tex': '_o'},
@@ -159,12 +165,18 @@ TABLES['subscripts'] = [
     {'chr': 'ₚ', 'key': 'sub_p', 'utf_name': 'LATIN SUBSCRIPT SMALL LETTER P', 'tex': '_p'},
     {'chr': 'ₛ', 'key': 'sub_s', 'utf_name': 'LATIN SUBSCRIPT SMALL LETTER S', 'tex': '_s'},
     {'chr': 'ₜ', 'key': 'sub_t', 'utf_name': 'LATIN SUBSCRIPT SMALL LETTER T', 'tex': '_t'},
-    {'chr': 'ⱼ', 'key': 'sub_j', 'utf_name': 'LATIN SUBSCRIPT SMALL LETTER J', 'tex': '_j'},
+
+    # There are no subscripts for b c d f g q w y z
+
+    # Greek subscripts
     {'chr': 'ᵦ', 'key': 'sub_beta', 'utf_name': 'GREEK SUBSCRIPT SMALL LETTER BETA', 'tex': '_\\beta'},
     {'chr': 'ᵧ', 'key': 'sub_gamma', 'utf_name': 'GREEK SUBSCRIPT SMALL LETTER GAMMA', 'tex': '_\\gamma'},
     {'chr': 'ᵨ', 'key': 'sub_rho', 'utf_name': 'GREEK SUBSCRIPT SMALL LETTER RHO', 'tex': '_\\rho'},
     {'chr': 'ᵩ', 'key': 'sub_phi', 'utf_name': 'GREEK SUBSCRIPT SMALL LETTER PHI', 'tex': '_\\phi'},
     {'chr': 'ᵪ', 'key': 'sub_chi', 'utf_name': 'GREEK SUBSCRIPT SMALL LETTER CHI', 'tex': '_\\chi'},
+
+    # Misc
+    {'chr': 'ₔ', 'key': 'sub_schwa', 'utf_name': 'LATIN SUBSCRIPT SMALL LETTER SCHWA', 'tex': '_\\schwa'},
 
     {'chr': '⨧', 'key': 'plus_with_sub_2', 'utf_name': 'PLUS SIGN WITH SUBSCRIPT TWO', 'tex': '\\plussubtwo'},
 
@@ -181,16 +193,49 @@ TABLES['superscripts'] = [
     {'chr': '⁷', 'key': 'sup_7', 'utf_name': 'SUPERSCRIPT SEVEN', 'tex': '^7'},
     {'chr': '⁸', 'key': 'sup_8', 'utf_name': 'SUPERSCRIPT EIGHT', 'tex': '^8'},
     {'chr': '⁹', 'key': 'sup_9', 'utf_name': 'SUPERSCRIPT NINE', 'tex': '^9'},
+
     {'chr': '⁺', 'key': 'sup_plus', 'utf_name': 'SUPERSCRIPT PLUS SIGN', 'tex': '^+'},
     {'chr': '⁻', 'key': 'sup_minus', 'utf_name': 'SUPERSCRIPT MINUS', 'tex': '^-'},
     {'chr': '⁼', 'key': 'sup_eq', 'utf_name': 'SUPERSCRIPT EQUALS SIGN', 'tex': '^='},
+
     {'chr': '⁽', 'key': 'sup_lparen', 'utf_name': 'SUPERSCRIPT LEFT PARENTHESIS', 'tex': '^('},
     {'chr': '⁾', 'key': 'sup_rparen', 'utf_name': 'SUPERSCRIPT RIGHT PARENTHESIS', 'tex': '^)'},
+
+    # The letters i, n have dedicated Superscripts and Subscripts block representations
+    # because they are historically important in math and chemistry, added in
+    # (1993 AI fact, todo check)
+    # https://rupertshepherd.info/resource_pages/superscript-letters-in-unicode
     {'chr': 'ⁿ', 'key': 'sup_n', 'utf_name': 'SUPERSCRIPT LATIN SMALL LETTER N', 'tex': '^n'},
     {'chr': 'ⁱ', 'key': 'sup_i', 'utf_name': 'SUPERSCRIPT LATIN SMALL LETTER I', 'tex': '^i'},
 
-    # https://rupertshepherd.info/resource_pages/superscript-letters-in-unicode
-    {'chr': 'ᵗ', 'key': 'sup_t', 'utf_name': 'SUPERSCRIPT LATIN SMALL LETTER T', 'tex': '^t'},
+    # The rest of the superscript alphabet exists in the Phonetic Extensions /
+    # Spacing Modifier Letters blocks (added in 2003 AI fact, todo check).
+    {'chr': 'ᵃ', 'key': 'sup_a', 'utf_name': 'MODIFIER LETTER SMALL A', 'tex': '^a'},
+    {'chr': 'ᵇ', 'key': 'sup_b', 'utf_name': 'MODIFIER LETTER SMALL B', 'tex': '^b'},
+    {'chr': 'ᶜ', 'key': 'sup_c', 'utf_name': 'MODIFIER LETTER SMALL C', 'tex': '^c'},
+    {'chr': 'ᵈ', 'key': 'sup_d', 'utf_name': 'MODIFIER LETTER SMALL D', 'tex': '^d'},
+    {'chr': 'ᵉ', 'key': 'sup_e', 'utf_name': 'MODIFIER LETTER SMALL E', 'tex': '^e'},
+    {'chr': 'ᶠ', 'key': 'sup_f', 'utf_name': 'MODIFIER LETTER SMALL F', 'tex': '^f'},
+    {'chr': 'ᵍ', 'key': 'sup_g', 'utf_name': 'MODIFIER LETTER SMALL G', 'tex': '^g'},
+    {'chr': 'ʰ', 'key': 'sup_h', 'utf_name': 'MODIFIER LETTER SMALL H', 'tex': '^h'},
+    {'chr': 'ʲ', 'key': 'sup_j', 'utf_name': 'MODIFIER LETTER SMALL J', 'tex': '^j'},
+    {'chr': 'ᵏ', 'key': 'sup_k', 'utf_name': 'MODIFIER LETTER SMALL K', 'tex': '^k'},
+    {'chr': 'ˡ', 'key': 'sup_l', 'utf_name': 'MODIFIER LETTER SMALL L', 'tex': '^l'},
+    {'chr': 'ᵐ', 'key': 'sup_m', 'utf_name': 'MODIFIER LETTER SMALL M', 'tex': '^m'},
+    # n is above
+    {'chr': 'ᵒ', 'key': 'sup_o', 'utf_name': 'MODIFIER LETTER SMALL O', 'tex': '^o'},
+    {'chr': 'ᵖ', 'key': 'sup_p', 'utf_name': 'MODIFIER LETTER SMALL P', 'tex': '^p'},
+    {'chr': 'ʳ', 'key': 'sup_r', 'utf_name': 'MODIFIER LETTER SMALL R', 'tex': '^r'},
+    {'chr': 'ˢ', 'key': 'sup_s', 'utf_name': 'MODIFIER LETTER SMALL S', 'tex': '^s'},
+    {'chr': 'ᵗ', 'key': 'sup_t', 'utf_name': 'MODIFIER LETTER SMALL T', 'tex': '^t'},
+    {'chr': 'ᵘ', 'key': 'sup_u', 'utf_name': 'MODIFIER LETTER SMALL U', 'tex': '^u'},
+    {'chr': 'ᵛ', 'key': 'sup_v', 'utf_name': 'MODIFIER LETTER SMALL V', 'tex': '^v'},
+    {'chr': 'ʷ', 'key': 'sup_w', 'utf_name': 'MODIFIER LETTER SMALL W', 'tex': '^w'},
+    {'chr': 'ˣ', 'key': 'sup_x', 'utf_name': 'MODIFIER LETTER SMALL X', 'tex': '^x'},
+    {'chr': 'ʸ', 'key': 'sup_y', 'utf_name': 'MODIFIER LETTER SMALL Y', 'tex': '^y'},
+    {'chr': 'ᶻ', 'key': 'sup_z', 'utf_name': 'MODIFIER LETTER SMALL Z', 'tex': '^z'},
+
+
 ]
 
 TABLES['quantifiers'] = [
@@ -252,7 +297,7 @@ TABLES['set_operators'] = [
 ]
 
 TABLES['relational'] = [
-    {'chr': '≤', 'key': 'le', 'utf_name': 'LESS-THAN OVER EQUAL TO', 'tex': '\\leq'},
+    {'chr': '≤', 'key': 'le', 'utf_name': 'LESS-THAN OR EQUAL TO', 'tex': '\\leq'},
     {'chr': '≥', 'key': 'ge', 'utf_name': 'GREATER-THAN OR EQUAL TO', 'tex': '\\geq'},
     {'chr': '<', 'key': 'lt', 'utf_name': 'LESS-THAN SIGN', 'tex': '<'},
     {'chr': '>', 'key': 'gt', 'utf_name': 'GREATER-THAN SIGN', 'tex': '>'},
@@ -279,7 +324,7 @@ TABLES['numeric_operators'] = [
 TABLES['other_operators'] = [
     {'chr': '⋅', 'key': 'cdot', 'utf_name': 'DOT OPERATOR', 'tex': '\\cdot'},
     {'chr': '∘', 'key': 'circ', 'utf_name': 'RING OPERATOR', 'tex': '\\circ'},
-    {'chr': '×', 'key': 'times', 'utf_name': 'MULTIPLICATION SIGN', 'tex': '\\times'},
+    {'chr': '×', 'key': 'times', 'utf_name': 'MULTIPLICATION SIGN', 'tex': '\\times', 'alias': ['product']},
     {'chr': '⊕', 'key': 'oplus', 'utf_name': 'CIRCLED PLUS', 'tex': '\\oplus'},
 ]
 
@@ -310,6 +355,14 @@ TABLES['logic'] = [
 
 TABLES['calclus'] = [
     {'chr': '∫', 'key': 'integral', 'utf_name': 'INTEGRAL', 'tex': '\\int'},
+    {'chr': '∬', 'key': 'double_integral', 'utf_name': 'DOUBLE INTEGRAL', 'tex': '\\iint', 'description': 'Double integral (area/volume integration)'},
+    {'chr': '∭', 'key': 'triple_integral', 'utf_name': 'TRIPLE INTEGRAL', 'tex': '\\iiint', 'description': 'Triple integral (volume integration in 3D)'},
+
+    # Surface and contour integrals
+    {'chr': '∮', 'key': 'contour_integral', 'utf_name': 'CONTOUR INTEGRAL', 'tex': '\\oint', 'description': 'Closed loop/contour integral (complex analysis)'},
+    {'chr': '∯', 'key': 'surface_integral', 'utf_name': 'SURFACE INTEGRAL', 'tex': '\\oiint', 'description': 'Closed surface integral (flux calculations)'},
+    {'chr': '∰', 'key': 'volume_integral', 'utf_name': 'VOLUME INTEGRAL', 'tex': '\\oiiint', 'description': 'Closed volume integral (e.g., divergence theorem)'},
+
     {'chr': '∂', 'key': 'partial', 'utf_name': 'PARTIAL DIFFERENTIAL', 'tex': '\\partial'},
     {'chr': '∆', 'key': 'delta_upper', 'utf_name': 'INCREMENT', 'tex': '\\increment'},
     {'chr': '∇', 'key': 'nabla', 'utf_name': 'NABLA', 'tex': '\\varnabla', 'alias': ['del', 'gradient'], 'references': ['https://en.wikipedia.org/wiki/Del']},
@@ -318,6 +371,7 @@ TABLES['calclus'] = [
 TABLES['proof'] = [
     {'chr': '∴', 'key': 'therefore', 'utf_name': 'THEREFORE', 'tex': '\\therefore'},
     {'chr': '∎', 'key': 'qed', 'utf_name': 'END OF PROOF', 'tex': '\\QED'},
+    {'chr': '□', 'key': 'square', 'utf_name': 'WHITE SQUARE', 'tex': r'\square', 'description': 'QED/□ end-of-proof marker (alternative to ∎).'},
 ]
 
 TABLES['nesting'] = [
@@ -340,7 +394,97 @@ TABLES['transfinite'] = [
     {'chr': '∞', 'key': 'infinity', 'utf_name': 'INFINITY', 'alias': ['infty'], 'tex': '\\infty'},
     {'chr': 'ℵ', 'key': 'aleph', 'utf_name': 'ALEF SYMBOL', 'tex': '\\aleph'},
     {'chr': 'ℶ', 'key': 'beth', 'utf_name': 'BET SYMBOL', 'alias': ['bet'], 'tex': '\\beth'},
+    {'chr': '𝔠', 'key': 'fraktur_c', 'utf_name': 'Mathematical Fraktur Small C', 'tex': '\\mathfrak{c}', 'description': 'cardinality of the continumou', 'references': ['https://en.wikipedia.org/wiki/Cardinal_characteristic_of_the_continuum']},
 ]
+
+TABLES['geometry'] = [
+    {'chr': '∦', 'key': 'not_parallel', 'utf_name': 'NOT PARALLEL TO', 'tex': r'\nparallel', 'description': 'Lines are not parallel.'},
+    {'chr': '∥', 'key': 'parallel', 'utf_name': 'PARALLEL TO', 'tex': r'\parallel', 'description': 'Parallel lines (a ∥ b).'},
+    {'chr': '∠', 'key': 'angle', 'utf_name': 'ANGLE', 'tex': r'\angle', 'description': 'Plain angle (∠ABC).'},
+    {'chr': '∡', 'key': 'measured_angle', 'utf_name': 'MEASURED ANGLE', 'tex': r'\measuredangle', 'description': 'Oriented/measured angle.'},
+    {'chr': '∢', 'key': 'spherical_angle', 'utf_name': 'SPHERICAL ANGLE', 'tex': r'\sphericalangle', 'description': 'Angle on a sphere (solid/dihedral angle contexts).'},
+    {'chr': '∟', 'key': 'right_angle', 'utf_name': 'RIGHT ANGLE', 'tex': r'\rightangle', 'description': 'Right angle glyph; often used in diagrams.'},
+    {'chr': '⊾', 'key': 'right_angle_with_arc', 'utf_name': 'RIGHT ANGLE WITH ARC', 'tex': r'\rightanglewitharc', 'description': 'Right angle marked with arc (diagrammatic).'},
+    {'chr': '⟂', 'key': 'perpendicular', 'utf_name': 'PERPENDICULAR', 'tex': r'\perp', 'description': 'Perpendicular/orthogonal relation.'},
+    {'chr': '≅', 'key': 'congruent', 'utf_name': 'APPROXIMATELY EQUAL TO', 'tex': r'\cong', 'description': 'Congruent (often used for geometric figures).'},
+    {'chr': '∼', 'key': 'similar', 'utf_name': 'TILDE', 'tex': r'\sim', 'description': 'Similar figures (same shape, scaled).'},
+]
+
+TABLES['other'] = [
+    {'chr': '™', 'key': 'trademark', 'utf_name': 'TRADE MARK SIGN', 'alias': ['tm'], 'tex': r'\textsuperscript{\texttrademark}'},
+]
+
+
+# ---- Relational / equivalence refinements -----------------------------------
+TABLES['relational'].extend([
+    {'chr': '≃', 'key': 'simeq', 'utf_name': 'ASYMPTOTICALLY EQUAL TO', 'tex': r'\simeq', 'description': '“Equal up to small error”; used for asymptotics or shape/structural equivalence.'},
+    {'chr': '≍', 'key': 'asymp', 'utf_name': 'EQUIVALENT TO', 'tex': r'\asymp', 'description': 'Two quantities grow at comparable rate; f ≍ g means same order of magnitude.'},
+    {'chr': '≜', 'key': 'triangleq', 'utf_name': 'DELTA EQUAL TO', 'tex': r'\triangleq', 'description': 'Definition by fiat: “is defined as”.'},
+    {'chr': '≝', 'key': 'defeq', 'utf_name': 'EQUAL TO BY DEFINITION', 'tex': r'\stackrel{\mathrm{def}}{=}', 'description': 'Explicitly marks an equality as a definition.'},
+    {'chr': '≟', 'key': 'questeq', 'utf_name': 'QUESTIONED EQUAL TO', 'tex': r'\overset{?}{=}', 'description': 'Proposed/unknown equality (used in derivations or puzzles).'},
+])
+
+# ---- Logic: more connectives & turnstiles -----------------------------------
+TABLES['logic'].extend([
+    {'chr': '⊻', 'key': 'xor', 'utf_name': 'XOR', 'tex': r'\veebar', 'description': 'Exclusive OR (true when exactly one operand is true).'},
+    {'chr': '⊼', 'key': 'nand', 'utf_name': 'NAND', 'tex': r'\barwedge', 'description': 'NOT (A AND B); functionally complete connective.'},
+    {'chr': '⊽', 'key': 'nor', 'utf_name': 'NOR', 'tex': r'\curlyvee', 'description': 'NOT (A OR B); also functionally complete.'},
+])
+
+TABLES['misc'].extend([
+    {'chr': '⊩', 'key': 'forces', 'utf_name': 'FORCES', 'tex': r'\Vdash', 'description': 'Semantic entailment/forcing; model-theoretic truth in all extensions.'},
+    {'chr': '⊬', 'key': 'not_proves', 'utf_name': 'DOES NOT PROVE', 'tex': r'\nvdash', 'description': 'Syntactic non-derivability (no proof in the calculus).'},
+    {'chr': '⊭', 'key': 'not_models', 'utf_name': 'NOT TRUE', 'tex': r'\nVdash', 'description': 'Does not semantically entail; not valid in all models.'},
+    {'chr': '⊧', 'key': 'models_alt', 'utf_name': 'MODELS', 'tex': r'\models', 'description': 'Semantic consequence / satisfaction (𝔐 ⊧ φ).'},
+])
+
+# ---- Arrows: injections/surjections/harpoons/hooks ---------------------------
+TABLES['arrows'].extend([
+    {'chr': '↪', 'key': 'hookrightarrow', 'utf_name': 'RIGHTWARDS ARROW WITH HOOK', 'tex': r'\hookrightarrow', 'description': 'Injection/monomorphism (structure-preserving embedding).'},
+    {'chr': '↩', 'key': 'hookleftarrow', 'utf_name': 'LEFTWARDS ARROW WITH HOOK', 'tex': r'\hookleftarrow', 'description': 'Left hook variant (category theory; partial inverses).'},
+    {'chr': '↠', 'key': 'twoheadrightarrow', 'utf_name': 'RIGHTWARDS TWO-HEADED ARROW', 'tex': r'\twoheadrightarrow', 'description': 'Surjection/epimorphism.'},
+    {'chr': '⇀', 'key': 'rightharpoonup', 'utf_name': 'RIGHTWARDS HARPOON WITH BARB UPWARDS', 'tex': r'\rightharpoonup', 'description': 'Vector/functional mappings; also used for limits/arrows in analysis.'},
+    {'chr': '↼', 'key': 'leftharpoonup', 'utf_name': 'LEFTWARDS HARPOON WITH BARB UPWARDS', 'tex': r'\leftharpoonup', 'description': 'Paired with right harpoon for bidirectional maps.'},
+    {'chr': '⟶', 'key': 'longrightarrow', 'utf_name': 'LONG RIGHTWARDS ARROW', 'tex': r'\longrightarrow', 'description': 'Long arrow for maps/sequences; improves readability in displays.'},
+    {'chr': '⟵', 'key': 'longleftarrow', 'utf_name': 'LONG LEFTWARDS ARROW', 'tex': r'\longleftarrow', 'description': 'Long left arrow (inverse maps, rewrites).'},
+    {'chr': '⟷', 'key': 'longleftrightarrow', 'utf_name': 'LONG LEFT RIGHT ARROW', 'tex': r'\longleftrightarrow', 'description': 'Long bidirectional arrow (bijections, correspondences).'},
+    {'chr': '⟹', 'key': 'LongRightarrow', 'utf_name': 'LONG RIGHTWARDS DOUBLE ARROW', 'tex': r'\Longrightarrow', 'description': 'Long implication; used for “therefore” style steps.'},
+    {'chr': '⟸', 'key': 'LongLeftarrow', 'utf_name': 'LONG LEFTWARDS DOUBLE ARROW', 'tex': r'\Longleftarrow', 'description': 'Long reverse implication.'},
+    {'chr': '⟺', 'key': 'LongLeftrightarrow', 'utf_name': 'LONG LEFT RIGHT DOUBLE ARROW', 'tex': r'\Longleftrightarrow', 'description': 'Long logical equivalence.'},
+])
+
+# ---- Lattices / set-like binary operators -----------------------------------
+TABLES['other_operators'].extend([
+    {'chr': '⊓', 'key': 'sqcap', 'utf_name': 'SQUARE CAP', 'tex': r'\sqcap', 'description': 'Lattice-theoretic meet; “and”-like aggregation.'},
+    {'chr': '⊔', 'key': 'sqcup', 'utf_name': 'SQUARE CUP', 'tex': r'\sqcup', 'description': 'Lattice-theoretic join; “or”-like aggregation.'},
+])
+
+# ---- Membership / containment complements -----------------------------------
+TABLES['set_operators'].extend([
+    {'chr': '∋', 'key': 'contains_as_member', 'utf_name': 'CONTAINS AS MEMBER', 'tex': r'\ni', 'description': 'Reverse membership; x ∈ A  ⇔  A ∋ x.'},
+    {'chr': '∌', 'key': 'not_contains_as_member', 'utf_name': 'DOES NOT CONTAIN AS MEMBER', 'tex': r'\not\ni', 'description': 'Negation of reverse membership.'},
+])
+
+# ---- Brackets often used in semantics / intervals ----------------------------
+TABLES['nesting'].extend([
+    {'chr': '⟦', 'key': 'llbracket', 'utf_name': 'MATHEMATICAL LEFT WHITE SQUARE BRACKET', 'tex': r'\llbracket', 'description': 'Denotation/semantic brackets; also Iverson brackets.'},
+    {'chr': '⟧', 'key': 'rrbracket', 'utf_name': 'MATHEMATICAL RIGHT WHITE SQUARE BRACKET', 'tex': r'\rrbracket', 'description': 'Right denotation/semantic bracket.'},
+])
+
+# ---- Ellipses variants -------------------------------------------------------
+TABLES['misc'].extend([
+    {'chr': '⋮', 'key': 'vdots', 'utf_name': 'VERTICAL ELLIPSIS', 'tex': r'\vdots', 'description': 'Vertical continuation (matrices, systems).'},
+    {'chr': '⋱', 'key': 'ddots', 'utf_name': 'DIAGONAL ELLIPSIS', 'tex': r'\ddots', 'description': 'Diagonal continuation (block matrices).'},
+    {'chr': '⋰', 'key': 'udots', 'utf_name': 'UP RIGHT DIAGONAL ELLIPSIS', 'tex': r'\iddots', 'description': 'Ascending diagonal continuation (variant).'},
+])
+
+# ---- Numeric sets / common fancy letters ------------------------------------
+TABLES['numeric_sets'].extend([
+    {'chr': '𝔸', 'key': 'dblA', 'utf_name': 'MATHEMATICAL DOUBLE-STRUCK CAPITAL A', 'tex': r'\mathbb{A}', 'description': 'Context-dependent: adele ring in number theory; also affine space A^n.'},
+    {'chr': '𝒪', 'key': 'bigO', 'utf_name': 'MATHEMATICAL SCRIPT CAPITAL O', 'tex': r'\mathcal{O}', 'description': 'Big-O growth rate (analysis/CS complexity).'},
+    {'chr': '℘', 'key': 'weierstrass_p', 'utf_name': 'SCRIPT CAPITAL P', 'tex': r'\wp', 'description': 'Weierstrass elliptic function (complex analysis).'},
+    {'chr': '𝒫', 'key': 'powerset', 'utf_name': 'MATHEMATICAL SCRIPT CAPITAL P', 'tex': r'\mathcal{P}', 'description': 'Power set / set of all subsets.'},
+])
 
 
 def _compositions():
@@ -358,10 +502,14 @@ def _populate_class():
     import keyword
     for table_name, subtable in TABLES.items():
         for item in subtable:
-            key = item['key']
-            if keyword.iskeyword(key):
-                key = key + '_'
-            SYMBOLS[key] = item['chr']
+            try:
+                key = item['key']
+                if keyword.iskeyword(key):
+                    key = key + '_'
+                SYMBOLS[key] = item['chr']
+            except Exception:
+                print(f'issue with item = {ub.urepr(item, nl=1)} in {table_name}')
+                raise
             # setattr(MathSymbols, key, item['chr'])
 
 
@@ -391,6 +539,14 @@ def _build_unicode_named_table():
 
 
 def _show_all():
+    """
+    Used to map symbols to latex names
+
+    Ignore:
+        from mathutf.symbols import *  # NOQA
+        from mathutf.symbols import _compositions, _populate_class, _build_unicode_named_table, _show_all, _dev_map_to_latex, _dev_search_for_symbols
+        _show_all()
+    """
     import unicodedata
     all_items = []
     for table_name, subtable in TABLES.items():
@@ -399,6 +555,8 @@ def _show_all():
             all_items.append(item)
             utf_name = unicodedata.name(v)
             item['group'] = table_name
+            cp = ord(item['chr'])
+            item['utf_code'] = f"U+{cp:04X}"
             if item.get('utf_name', None) != utf_name:
                 raise AssertionError(f'{item["utf_name"]} != {utf_name}')
             # print('{},'.format(ub.repr2(item, nl=0)))
@@ -414,6 +572,12 @@ def _show_all():
 def _dev_map_to_latex():
     """
     Used to map symbols to latex names
+
+    Ignore:
+        import sys, ubelt
+        from mathutf.symbols import *  # NOQA
+        from mathutf.symbols import _compositions, _populate_class, _build_unicode_named_table, _show_all, _dev_map_to_latex, _dev_search_for_symbols
+        _dev_map_to_latex()
     """
     js_map = ub.grabdata('https://raw.githubusercontent.com/fKunstner/latex-to-utf8/master/map.js')
     import ast
